@@ -1,5 +1,6 @@
 package com.woozxnlog.controller;
 
+import com.woozxnlog.domain.Post;
 import com.woozxnlog.request.PostCreate;
 import com.woozxnlog.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +24,11 @@ public class PostController {
     @PostMapping("/posts")
     public void post(@RequestBody @Valid PostCreate request) {
         postService.write(request);
+    }
+
+    @GetMapping("/posts/{postId}")
+    public Post get(@PathVariable(name = "postId") Long id) {
+        Post post = postService.get(id);
+        return post;
     }
 }
