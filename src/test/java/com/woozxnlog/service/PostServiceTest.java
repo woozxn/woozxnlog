@@ -3,6 +3,7 @@ package com.woozxnlog.service;
 import com.woozxnlog.domain.Post;
 import com.woozxnlog.repository.PostRepository;
 import com.woozxnlog.request.PostCreate;
+import com.woozxnlog.response.PostResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -58,13 +59,13 @@ class PostServiceTest {
         Long postId = 1L;
 
         // when
-        Post post = postService.get(requestPost.getId());
+        PostResponse response = postService.get(requestPost.getId());
 
         // then
-        assertNotNull(post);
+        assertNotNull(response);
         assertEquals(1L, postRepository.count());
-        assertEquals("foo", post.getTitle());
-        assertEquals("bar", post.getContent());
+        assertEquals("foo", response.getTitle());
+        assertEquals("bar", response.getContent());
     }
 
 }
